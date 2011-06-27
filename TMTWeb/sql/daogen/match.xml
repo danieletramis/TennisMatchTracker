@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE daogen-metadata>
+
+<daogen-metadata>
+   <version>2.4.1</version>
+   <timestamp>28.06.2011</timestamp>
+
+   <tableName>match</tableName>
+   <className>Match</className>
+   <language>java</language>
+   <database>mysql</database>
+   <useCache>false</useCache>
+   <classPackage>it.dtsoft.tennismatchtracker.dataaccess.dao</classPackage>
+   <columns>
+      <dbColumn PK="true" colType="Int" colName="matchId" varName="matchId" 
+      automatic="true" valueSource="null" indexed="true" colLength="10" orderLevel="1" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Int" colName="firstPlayerId" varName="firstPlayerId" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Int" colName="secondPlayerId" varName="secondPlayerId" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+   </columns>
+</daogen-metadata>

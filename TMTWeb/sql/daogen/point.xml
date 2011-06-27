@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE daogen-metadata>
+
+<daogen-metadata>
+   <version>2.4.1</version>
+   <timestamp>28.06.2011</timestamp>
+
+   <tableName>point</tableName>
+   <className>Point</className>
+   <language>java</language>
+   <database>mysql</database>
+   <useCache>false</useCache>
+   <classPackage>it.dtsoft.tennismatchtracker.dataaccess.dao</classPackage>
+   <columns>
+      <dbColumn PK="true" colType="Int" colName="pointId" varName="pointId" 
+      automatic="true" valueSource="null" indexed="true" colLength="10" orderLevel="1" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Int" colName="matchId" varName="matchId" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Int" colName="playerId" varName="playerId" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="String" colName="pointType" varName="pointType" 
+      automatic="false" valueSource="" indexed="false" colLength="255" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Timestamp" colName="timestamp" varName="timestamp" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="String" colName="pointLiteral" varName="pointLiteral" 
+      automatic="false" valueSource="" indexed="false" colLength="255" orderLevel="0" orderType="ASC" />
+
+   </columns>
+</daogen-metadata>
