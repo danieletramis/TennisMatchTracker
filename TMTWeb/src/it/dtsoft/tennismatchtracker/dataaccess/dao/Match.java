@@ -1,10 +1,7 @@
 package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.io.Serializable;
 
  /**
   * Match Value Object.
@@ -34,7 +31,11 @@ import java.math.*;
 
 public class Match implements Cloneable, Serializable {
 
-    /** 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5631398121937122632L;
+	/** 
      * Persistent Instance variables. This data is directly 
      * mapped to the columns of database table.
      */

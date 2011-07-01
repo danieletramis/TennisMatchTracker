@@ -1,10 +1,7 @@
 package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.io.Serializable;
 
  /**
   * Player Value Object.
