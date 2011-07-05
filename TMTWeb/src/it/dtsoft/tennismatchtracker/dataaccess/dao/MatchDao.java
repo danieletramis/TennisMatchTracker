@@ -81,7 +81,7 @@ public class MatchDao {
      */
     public void load(Connection conn, Match valueObject) throws NotFoundException, SQLException {
 
-          String sql = "SELECT * FROM match WHERE (matchId = ? ) "; 
+          String sql = "SELECT * FROM tmt_match WHERE (matchId = ? ) "; 
           PreparedStatement stmt = null;
 
           try {
@@ -108,7 +108,7 @@ public class MatchDao {
      */
     public List loadAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT * FROM match ORDER BY matchId ASC ";
+          String sql = "SELECT * FROM tmt_match ORDER BY matchId ASC ";
           List searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
@@ -136,7 +136,7 @@ public class MatchDao {
           ResultSet result = null;
 
           try {
-               sql = "INSERT INTO match ( firstPlayerId, secondPlayerId) VALUES (?, ?) ";
+               sql = "INSERT INTO tmt_match ( firstPlayerId, secondPlayerId) VALUES (?, ?) ";
                stmt = conn.prepareStatement(sql);
 
                stmt.setInt(1, valueObject.getFirstPlayerId()); 
@@ -197,7 +197,7 @@ public class MatchDao {
     public void save(Connection conn, Match valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "UPDATE match SET firstPlayerId = ?, secondPlayerId = ? WHERE (matchId = ? ) ";
+          String sql = "UPDATE tmt_match SET firstPlayerId = ?, secondPlayerId = ? WHERE (matchId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -238,7 +238,7 @@ public class MatchDao {
     public void delete(Connection conn, Match valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "DELETE FROM match WHERE (matchId = ? ) ";
+          String sql = "DELETE FROM tmt_match WHERE (matchId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -274,7 +274,7 @@ public class MatchDao {
      */
     public void deleteAll(Connection conn) throws SQLException {
 
-          String sql = "DELETE FROM match";
+          String sql = "DELETE FROM tmt_match";
           PreparedStatement stmt = null;
 
           try {
@@ -297,7 +297,7 @@ public class MatchDao {
      */
     public int countAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT count(*) FROM match";
+          String sql = "SELECT count(*) FROM tmt_match";
           PreparedStatement stmt = null;
           ResultSet result = null;
           int allRows = 0;
@@ -336,7 +336,7 @@ public class MatchDao {
           List searchResults;
 
           boolean first = true;
-          StringBuffer sql = new StringBuffer("SELECT * FROM match WHERE 1=1 ");
+          StringBuffer sql = new StringBuffer("SELECT * FROM tmt_match WHERE 1=1 ");
 
           if (valueObject.getMatchId() != 0) {
               if (first) { first = false; }

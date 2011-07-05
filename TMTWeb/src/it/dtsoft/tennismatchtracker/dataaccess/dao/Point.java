@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
  /**
   * Point Value Object.
-  * This class is value object representing database table point
+  * This class is value object representing database table tmt_point
   * This class is intented to be used together with associated Dao object.
   */
 
@@ -185,7 +185,7 @@ public class Point implements Cloneable, Serializable {
      */
     public String toString() {
         StringBuffer out = new StringBuffer(this.getDaogenVersion());
-        out.append("\nclass Point, mapping to table point\n");
+        out.append("\nclass Point, mapping to table tmt_point\n");
         out.append("Persistent attributes: \n"); 
         out.append("pointId = " + this.pointId + "\n"); 
         out.append("matchId = " + this.matchId + "\n"); 

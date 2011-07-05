@@ -5,7 +5,7 @@
 
 <struts>
 
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 
 	<package name="basicstruts2" extends="struts-default">
 
@@ -16,6 +16,14 @@
 		<action name="match"
 			class="it.dtsoft.tennismatchtracker.action.MatchAction" method="execute">
 			<result name="success">/match.jsp</result>
+		</action>
+		<action name="players"
+			class="it.dtsoft.tennismatchtracker.action.PlayersAction" method="execute">
+			<result name="success">/players.jsp</result>
+		</action>
+		<action name="statistics"
+			class="it.dtsoft.tennismatchtracker.action.StatisticsAction" method="execute">
+			<result name="success">/statistics.jsp</result>
 		</action>
 	</package>
 

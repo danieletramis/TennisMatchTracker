@@ -31,14 +31,15 @@ package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 public class NotFoundException extends Exception {
 
-   /**
-	 * 
+    /**
+	 * Serial version uid.
 	 */
 	private static final long serialVersionUID = -4529624598091964362L;
 
-/**
+	/**
     * Constructor for NotFoundException. The input message is
     * returned in toString() message.
+    * @param msg exception message
     */
     public NotFoundException(String msg) {
            super(msg);

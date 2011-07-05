@@ -1,9 +1,12 @@
 package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
  /**
@@ -78,7 +81,7 @@ public class PlayerDao {
      */
     public void load(Connection conn, Player valueObject) throws NotFoundException, SQLException {
 
-          String sql = "SELECT * FROM player WHERE (playerId = ? ) "; 
+          String sql = "SELECT * FROM tmt_player WHERE (playerId = ? ) "; 
           PreparedStatement stmt = null;
 
           try {
@@ -105,7 +108,7 @@ public class PlayerDao {
      */
     public List loadAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT * FROM player ORDER BY playerId ASC ";
+          String sql = "SELECT * FROM tmt_player ORDER BY playerId ASC ";
           List searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
@@ -133,7 +136,7 @@ public class PlayerDao {
           ResultSet result = null;
 
           try {
-               sql = "INSERT INTO player ( name) VALUES (?) ";
+               sql = "INSERT INTO tmt_player ( name) VALUES (?) ";
                stmt = conn.prepareStatement(sql);
 
                stmt.setString(1, valueObject.getName()); 
@@ -193,7 +196,7 @@ public class PlayerDao {
     public void save(Connection conn, Player valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "UPDATE player SET name = ? WHERE (playerId = ? ) ";
+          String sql = "UPDATE tmt_player SET name = ? WHERE (playerId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -233,7 +236,7 @@ public class PlayerDao {
     public void delete(Connection conn, Player valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "DELETE FROM player WHERE (playerId = ? ) ";
+          String sql = "DELETE FROM tmt_player WHERE (playerId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -269,7 +272,7 @@ public class PlayerDao {
      */
     public void deleteAll(Connection conn) throws SQLException {
 
-          String sql = "DELETE FROM player";
+          String sql = "DELETE FROM tmt_player";
           PreparedStatement stmt = null;
 
           try {
@@ -292,7 +295,7 @@ public class PlayerDao {
      */
     public int countAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT count(*) FROM player";
+          String sql = "SELECT count(*) FROM tmt_player";
           PreparedStatement stmt = null;
           ResultSet result = null;
           int allRows = 0;
@@ -331,7 +334,7 @@ public class PlayerDao {
           List searchResults;
 
           boolean first = true;
-          StringBuffer sql = new StringBuffer("SELECT * FROM player WHERE 1=1 ");
+          StringBuffer sql = new StringBuffer("SELECT * FROM tmt_player WHERE 1=1 ");
 
           if (valueObject.getPlayerId() != 0) {
               if (first) { first = false; }

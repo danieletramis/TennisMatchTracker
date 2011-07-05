@@ -1,11 +1,13 @@
 package it.dtsoft.tennismatchtracker.model;
 
+import it.dtsoft.tennismatchtracker.dataaccess.dao.Match;
 import it.dtsoft.tennismatchtracker.dataaccess.dao.Player;
 
 import java.util.Date;
 
 public class MatchModel {
 
+	private Match match;
 	private PlayerScoreModel firstPlayer;
 	private PlayerScoreModel secondPlayer;
 	private Date startTime;
@@ -24,6 +26,14 @@ public class MatchModel {
 		this.playerToServe = startingPlayer;
 	}
 	
+	public Match getMatch() {
+		return match;
+	}
+
+	public void setMatch(Match match) {
+		this.match = match;
+	}
+
 	public PlayerScoreModel getFirstPlayer() {
 		if (firstPlayer == null) {
 			Player p = new Player();

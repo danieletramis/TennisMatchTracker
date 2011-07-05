@@ -5,7 +5,7 @@ import java.io.Serializable;
 
  /**
   * Player Value Object.
-  * This class is value object representing database table player
+  * This class is value object representing database table tmt_player
   * This class is intented to be used together with associated Dao object.
   */
 
@@ -126,7 +126,7 @@ public class Player implements Cloneable, Serializable {
      */
     public String toString() {
         StringBuffer out = new StringBuffer(this.getDaogenVersion());
-        out.append("\nclass Player, mapping to table player\n");
+        out.append("\nclass Player, mapping to table tmt_player\n");
         out.append("Persistent attributes: \n"); 
         out.append("playerId = " + this.playerId + "\n"); 
         out.append("name = " + this.name + "\n"); 

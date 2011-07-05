@@ -1,0 +1,12 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	color: darkBlue;
+}
+
+.errorMsg {
+	color: red;
+	background-color: lightPink;
+	border: 1px solid red;
+	padding: 3px;
+}

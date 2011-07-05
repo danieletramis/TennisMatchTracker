@@ -5,7 +5,7 @@
    <version>2.4.1</version>
    <timestamp>28.06.2011</timestamp>
 
-   <tableName>point</tableName>
+   <tableName>tmt_point</tableName>
    <className>Point</className>
    <language>java</language>
    <database>mysql</database>

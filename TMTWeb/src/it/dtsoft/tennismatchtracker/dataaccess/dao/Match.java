@@ -5,8 +5,8 @@ import java.io.Serializable;
 
  /**
   * Match Value Object.
-  * This class is value object representing database table match
-  * This class is intended to be used together with associated Dao object.
+  * This class is value object representing database table tmt_match
+  * This class is intented to be used together with associated Dao object.
   */
 
  /**
@@ -20,7 +20,7 @@ import java.io.Serializable;
   * in GNU project's pages: http://www.gnu.org/copyleft/gpl.html
   *
   * If you wish to use the DaoGen generator to produce code for closed-source
-  * commercial applications, you must pay the license fee. The price is
+  * commercial applications, you must pay the lisence fee. The price is
   * 5 USD or 5 Eur for each database table, you are generating code for.
   * (That includes unlimited amount of iterations with all supported languages
   * for each database table you are paying for.) Send mail to
@@ -31,11 +31,7 @@ import java.io.Serializable;
 
 public class Match implements Cloneable, Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 5631398121937122632L;
-	/** 
+    /** 
      * Persistent Instance variables. This data is directly 
      * mapped to the columns of database table.
      */
@@ -96,7 +92,7 @@ public class Match implements Cloneable, Serializable {
      * setAll allows to set all persistent variables in one method call.
      * This is useful, when all data is available and it is needed to 
      * set the initial state of this object. Note that this method will
-     * directly modify instance variables, without going trough the 
+     * directly modify instance variales, without going trough the 
      * individual set-methods.
      */
 
@@ -140,7 +136,7 @@ public class Match implements Cloneable, Serializable {
      */
     public String toString() {
         StringBuffer out = new StringBuffer(this.getDaogenVersion());
-        out.append("\nclass Match, mapping to table match\n");
+        out.append("\nclass Match, mapping to table tmt_match\n");
         out.append("Persistent attributes: \n"); 
         out.append("matchId = " + this.matchId + "\n"); 
         out.append("firstPlayerId = " + this.firstPlayerId + "\n"); 
@@ -152,7 +148,7 @@ public class Match implements Cloneable, Serializable {
     /**
      * Clone will return identical deep copy of this valueObject.
      * Note, that this method is different than the clone() which
-     * is defined in java.lang.Object. Here, the returned cloned object
+     * is defined in java.lang.Object. Here, the retuned cloned object
      * will also have all its attributes cloned.
      */
     public Object clone() {

@@ -1,9 +1,12 @@
 package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
  /**
@@ -78,7 +81,7 @@ public class PointDao {
      */
     public void load(Connection conn, Point valueObject) throws NotFoundException, SQLException {
 
-          String sql = "SELECT * FROM point WHERE (pointId = ? ) "; 
+          String sql = "SELECT * FROM tmt_point WHERE (pointId = ? ) "; 
           PreparedStatement stmt = null;
 
           try {
@@ -105,7 +108,7 @@ public class PointDao {
      */
     public List loadAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT * FROM point ORDER BY pointId ASC ";
+          String sql = "SELECT * FROM tmt_point ORDER BY pointId ASC ";
           List searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
@@ -133,7 +136,7 @@ public class PointDao {
           ResultSet result = null;
 
           try {
-               sql = "INSERT INTO point ( matchId, playerId, pointType, "
+               sql = "INSERT INTO tmt_point ( matchId, playerId, pointType, "
                + "timestamp, pointLiteral) VALUES (?, ?, ?, ?, ?) ";
                stmt = conn.prepareStatement(sql);
 
@@ -198,7 +201,7 @@ public class PointDao {
     public void save(Connection conn, Point valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "UPDATE point SET matchId = ?, playerId = ?, pointType = ?, "
+          String sql = "UPDATE tmt_point SET matchId = ?, playerId = ?, pointType = ?, "
                + "timestamp = ?, pointLiteral = ? WHERE (pointId = ? ) ";
           PreparedStatement stmt = null;
 
@@ -243,7 +246,7 @@ public class PointDao {
     public void delete(Connection conn, Point valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "DELETE FROM point WHERE (pointId = ? ) ";
+          String sql = "DELETE FROM tmt_point WHERE (pointId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -279,7 +282,7 @@ public class PointDao {
      */
     public void deleteAll(Connection conn) throws SQLException {
 
-          String sql = "DELETE FROM point";
+          String sql = "DELETE FROM tmt_point";
           PreparedStatement stmt = null;
 
           try {
@@ -302,7 +305,7 @@ public class PointDao {
      */
     public int countAll(Connection conn) throws SQLException {
 
-          String sql = "SELECT count(*) FROM point";
+          String sql = "SELECT count(*) FROM tmt_point";
           PreparedStatement stmt = null;
           ResultSet result = null;
           int allRows = 0;
@@ -341,7 +344,7 @@ public class PointDao {
           List searchResults;
 
           boolean first = true;
-          StringBuffer sql = new StringBuffer("SELECT * FROM point WHERE 1=1 ");
+          StringBuffer sql = new StringBuffer("SELECT * FROM tmt_point WHERE 1=1 ");
 
           if (valueObject.getPointId() != 0) {
               if (first) { first = false; }
