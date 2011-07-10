@@ -136,11 +136,14 @@ public class MatchDao {
           ResultSet result = null;
 
           try {
-               sql = "INSERT INTO tmt_match ( firstPlayerId, secondPlayerId) VALUES (?, ?) ";
+               sql = "INSERT INTO tmt_match ( firstPlayerId, secondPlayerId, startTime, "
+               + "endTime) VALUES (?, ?, ?, ?) ";
                stmt = conn.prepareStatement(sql);
 
                stmt.setInt(1, valueObject.getFirstPlayerId()); 
                stmt.setInt(2, valueObject.getSecondPlayerId()); 
+               stmt.setTimestamp(3, valueObject.getStartTime()); 
+               stmt.setTimestamp(4, valueObject.getEndTime()); 
 
                int rowcount = databaseUpdate(conn, stmt);
                if (rowcount != 1) {
@@ -197,15 +200,18 @@ public class MatchDao {
     public void save(Connection conn, Match valueObject) 
           throws NotFoundException, SQLException {
 
-          String sql = "UPDATE tmt_match SET firstPlayerId = ?, secondPlayerId = ? WHERE (matchId = ? ) ";
+          String sql = "UPDATE tmt_match SET firstPlayerId = ?, secondPlayerId = ?, startTime = ?, "
+               + "endTime = ? WHERE (matchId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
               stmt = conn.prepareStatement(sql);
               stmt.setInt(1, valueObject.getFirstPlayerId()); 
               stmt.setInt(2, valueObject.getSecondPlayerId()); 
+              stmt.setTimestamp(3, valueObject.getStartTime()); 
+              stmt.setTimestamp(4, valueObject.getEndTime()); 
 
-              stmt.setInt(3, valueObject.getMatchId()); 
+              stmt.setInt(5, valueObject.getMatchId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {
@@ -353,6 +359,16 @@ public class MatchDao {
               sql.append("AND secondPlayerId = ").append(valueObject.getSecondPlayerId()).append(" ");
           }
 
+          if (valueObject.getStartTime() != null) {
+              if (first) { first = false; }
+              sql.append("AND startTime = '").append(valueObject.getStartTime()).append("' ");
+          }
+
+          if (valueObject.getEndTime() != null) {
+              if (first) { first = false; }
+              sql.append("AND endTime = '").append(valueObject.getEndTime()).append("' ");
+          }
+
 
           sql.append("ORDER BY matchId ASC ");
 
@@ -416,6 +432,8 @@ public class MatchDao {
                    valueObject.setMatchId(result.getInt("matchId")); 
                    valueObject.setFirstPlayerId(result.getInt("firstPlayerId")); 
                    valueObject.setSecondPlayerId(result.getInt("secondPlayerId")); 
+                   valueObject.setStartTime(result.getTimestamp("startTime")); 
+                   valueObject.setEndTime(result.getTimestamp("endTime")); 
 
               } else {
                     //System.out.println("Match Object Not Found!");
@@ -452,6 +470,8 @@ public class MatchDao {
                    temp.setMatchId(result.getInt("matchId")); 
                    temp.setFirstPlayerId(result.getInt("firstPlayerId")); 
                    temp.setSecondPlayerId(result.getInt("secondPlayerId")); 
+                   temp.setStartTime(result.getTimestamp("startTime")); 
+                   temp.setEndTime(result.getTimestamp("endTime")); 
 
                    searchResults.add(temp);
               }

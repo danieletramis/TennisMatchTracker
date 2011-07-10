@@ -21,5 +21,11 @@
       <dbColumn PK="false" colType="Int" colName="secondPlayerId" varName="secondPlayerId" 
       automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
 
+      <dbColumn PK="false" colType="Timestamp" colName="startTime" varName="startTime" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
+      <dbColumn PK="false" colType="Timestamp" colName="endTime" varName="endTime" 
+      automatic="false" valueSource="" indexed="false" colLength="10" orderLevel="0" orderType="ASC" />
+
    </columns>
 </daogen-metadata>

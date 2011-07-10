@@ -1,12 +1,9 @@
 package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
+import java.math.*;
 
 
  /**
@@ -137,7 +134,7 @@ public class PointDao {
 
           try {
                sql = "INSERT INTO tmt_point ( matchId, playerId, pointType, "
-               + "timestamp, pointLiteral) VALUES (?, ?, ?, ?, ?) ";
+               + "timestamp, pointLiteral, deleted) VALUES (?, ?, ?, ?, ?, ?) ";
                stmt = conn.prepareStatement(sql);
 
                stmt.setInt(1, valueObject.getMatchId()); 
@@ -145,6 +142,7 @@ public class PointDao {
                stmt.setString(3, valueObject.getPointType()); 
                stmt.setTimestamp(4, valueObject.getTimestamp()); 
                stmt.setString(5, valueObject.getPointLiteral()); 
+               stmt.setInt(6, valueObject.getDeleted()); 
 
                int rowcount = databaseUpdate(conn, stmt);
                if (rowcount != 1) {
@@ -202,7 +200,7 @@ public class PointDao {
           throws NotFoundException, SQLException {
 
           String sql = "UPDATE tmt_point SET matchId = ?, playerId = ?, pointType = ?, "
-               + "timestamp = ?, pointLiteral = ? WHERE (pointId = ? ) ";
+               + "timestamp = ?, pointLiteral = ?, deleted = ? WHERE (pointId = ? ) ";
           PreparedStatement stmt = null;
 
           try {
@@ -212,8 +210,9 @@ public class PointDao {
               stmt.setString(3, valueObject.getPointType()); 
               stmt.setTimestamp(4, valueObject.getTimestamp()); 
               stmt.setString(5, valueObject.getPointLiteral()); 
+              stmt.setInt(6, valueObject.getDeleted()); 
 
-              stmt.setInt(6, valueObject.getPointId()); 
+              stmt.setInt(7, valueObject.getPointId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {
@@ -376,6 +375,11 @@ public class PointDao {
               sql.append("AND pointLiteral LIKE '").append(valueObject.getPointLiteral()).append("%' ");
           }
 
+          if (valueObject.getDeleted() != 0) {
+              if (first) { first = false; }
+              sql.append("AND deleted = ").append(valueObject.getDeleted()).append(" ");
+          }
+
 
           sql.append("ORDER BY pointId ASC ");
 
@@ -442,6 +446,7 @@ public class PointDao {
                    valueObject.setPointType(result.getString("pointType")); 
                    valueObject.setTimestamp(result.getTimestamp("timestamp")); 
                    valueObject.setPointLiteral(result.getString("pointLiteral")); 
+                   valueObject.setDeleted(result.getInt("deleted")); 
 
               } else {
                     //System.out.println("Point Object Not Found!");
@@ -481,6 +486,7 @@ public class PointDao {
                    temp.setPointType(result.getString("pointType")); 
                    temp.setTimestamp(result.getTimestamp("timestamp")); 
                    temp.setPointLiteral(result.getString("pointLiteral")); 
+                   temp.setDeleted(result.getInt("deleted")); 
 
                    searchResults.add(temp);
               }

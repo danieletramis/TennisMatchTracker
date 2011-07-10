@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Tennis Match Tracker - Welcome</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link id="linkFavicon" rel="shortcut icon" type="image/x-icon" href="images/ball.png">
 </head>
 <body>
 	<h1>Welcome to Tennis Match Tracker!</h1>

@@ -91,6 +91,11 @@ public class MatchModel {
 		}
 		return firstPlayer.getScoreLiteral() + " - " + secondPlayer.getScoreLiteral();
 	}
+	
+	public String getFullScoreString() {
+		return this.getSetsString() + " : " + this.getGamesString() + " : " + this.getScoreString();
+	}
+	
 	public void updateScore(PlayerScoreModel player) {
 		if (player.equals(firstPlayer)) {
 			incrementScore(firstPlayer, secondPlayer);

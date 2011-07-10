@@ -2,8 +2,6 @@ package it.dtsoft.tennismatchtracker.action;
 
 import it.dtsoft.tennismatchtracker.dataaccess.dao.Match;
 import it.dtsoft.tennismatchtracker.dataaccess.dao.Player;
-import it.dtsoft.tennismatchtracker.dataaccess.dao.Point;
-import it.dtsoft.tennismatchtracker.dataaccess.dao.PointDao;
 import it.dtsoft.tennismatchtracker.dataaccess.datasource.DataSourceDao;
 import it.dtsoft.tennismatchtracker.dataaccess.exception.AmbiguousSearchException;
 import it.dtsoft.tennismatchtracker.dataaccess.util.DataAccessUtils;
@@ -26,7 +24,6 @@ public class MatchAction extends ActionSupport implements SessionAware, Paramete
 	//private static final Logger LOGGER = Logger.getLogger("it.dtsoft.tennismatchtracker.action.MatchAction");
 	private static final String param_first = "FIRST";
 	private static final String param_second = "SECOND";
-	private static final String WINNER = "WINNER";
 	
 	private MatchModel matchModel;
 	private String firstPlayer;
@@ -85,11 +82,11 @@ public class MatchAction extends ActionSupport implements SessionAware, Paramete
 				if (param_first.equals(playerOfScore)) {
 					matchModel.updateScore(matchModel.getFirstPlayer());
 					
-					saveScore(dao, matchModel.getFirstPlayer(), WINNER);
+					saveScore(dao, matchModel.getFirstPlayer(), scoreType);
 				} else if (param_second.equals(playerOfScore)) {
 					matchModel.updateScore(matchModel.getSecondPlayer());
 					
-					saveScore(dao, matchModel.getSecondPlayer(), WINNER);
+					saveScore(dao, matchModel.getSecondPlayer(), scoreType);
 				} else {
 					errorMsg = "Error in input parameters";
 				}
@@ -104,7 +101,7 @@ public class MatchAction extends ActionSupport implements SessionAware, Paramete
 			throws SQLException {
 		Match match = matchModel.getMatch();
 		Player player = player1.getPlayer();
-		String scoreString = matchModel.getScoreString();
+		String scoreString = matchModel.getFullScoreString();
 		Timestamp timestampIn = new Timestamp(new Date().getTime());
 		
 		DataAccessUtils.savePoint(dao, pointType, match, player, scoreString, timestampIn);
@@ -115,8 +112,9 @@ public class MatchAction extends ActionSupport implements SessionAware, Paramete
 			PlayerScoreModel psc2) throws SQLException {
 		Player player1 = psc1.getPlayer();
 		Player player2 = psc2.getPlayer();
+		Timestamp startTime = new Timestamp(new Date().getTime());
 		
-		return DataAccessUtils.saveNewMatch(dao, player1, player2);
+		return DataAccessUtils.saveNewMatch(dao, player1, player2, startTime);
 	}
 
 

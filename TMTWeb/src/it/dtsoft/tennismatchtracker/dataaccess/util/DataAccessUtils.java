@@ -11,6 +11,7 @@ import it.dtsoft.tennismatchtracker.dataaccess.exception.AmbiguousSearchExceptio
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class DataAccessUtils {
@@ -33,13 +34,15 @@ public class DataAccessUtils {
 		return p;
 	}
 
-	public static Match saveNewMatch(DataSourceDao dao, Player player1, Player player2)
+	public static Match saveNewMatch(DataSourceDao dao, Player player1, Player player2,
+			Timestamp startTime)
 			throws SQLException {
 		MatchDao m_dao = dao.createMatchDataSource();
 		Match m = m_dao.createValueObject();
 		
 		m.setFirstPlayerId(player1.getPlayerId());
 		m.setSecondPlayerId(player2.getPlayerId());
+		m.setStartTime(startTime);
 		
 		m_dao.create(dao.getConnection(), m);
 		
@@ -58,6 +61,7 @@ public class DataAccessUtils {
 		p.setPointLiteral(scoreString);
 		p.setTimestamp(timestampIn);
 		p.setPointType(pointType);
+		p.setDeleted(0);
 		
 		p_dao.create(dao.getConnection(), p);
 		

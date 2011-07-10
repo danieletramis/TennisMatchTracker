@@ -2,6 +2,7 @@ package it.dtsoft.tennismatchtracker.dataaccess.dao;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
  /**
   * Match Value Object.
@@ -38,6 +39,8 @@ public class Match implements Cloneable, Serializable {
     private int matchId;
     private int firstPlayerId;
     private int secondPlayerId;
+    private Timestamp startTime;
+    private Timestamp endTime;
 
 
 
@@ -86,6 +89,20 @@ public class Match implements Cloneable, Serializable {
           this.secondPlayerId = secondPlayerIdIn;
     }
 
+    public Timestamp getStartTime() {
+          return this.startTime;
+    }
+    public void setStartTime(Timestamp startTimeIn) {
+          this.startTime = startTimeIn;
+    }
+
+    public Timestamp getEndTime() {
+          return this.endTime;
+    }
+    public void setEndTime(Timestamp endTimeIn) {
+          this.endTime = endTimeIn;
+    }
+
 
 
     /** 
@@ -98,10 +115,14 @@ public class Match implements Cloneable, Serializable {
 
     public void setAll(int matchIdIn,
           int firstPlayerIdIn,
-          int secondPlayerIdIn) {
+          int secondPlayerIdIn,
+          Timestamp startTimeIn,
+          Timestamp endTimeIn) {
           this.matchId = matchIdIn;
           this.firstPlayerId = firstPlayerIdIn;
           this.secondPlayerId = secondPlayerIdIn;
+          this.startTime = startTimeIn;
+          this.endTime = endTimeIn;
     }
 
 
@@ -123,6 +144,18 @@ public class Match implements Cloneable, Serializable {
           if (valueObject.getSecondPlayerId() != this.secondPlayerId) {
                     return(false);
           }
+          if (this.startTime == null) {
+                    if (valueObject.getStartTime() != null)
+                           return(false);
+          } else if (!this.startTime.equals(valueObject.getStartTime())) {
+                    return(false);
+          }
+          if (this.endTime == null) {
+                    if (valueObject.getEndTime() != null)
+                           return(false);
+          } else if (!this.endTime.equals(valueObject.getEndTime())) {
+                    return(false);
+          }
 
           return true;
     }
@@ -141,6 +174,8 @@ public class Match implements Cloneable, Serializable {
         out.append("matchId = " + this.matchId + "\n"); 
         out.append("firstPlayerId = " + this.firstPlayerId + "\n"); 
         out.append("secondPlayerId = " + this.secondPlayerId + "\n"); 
+        out.append("startTime = " + this.startTime + "\n"); 
+        out.append("endTime = " + this.endTime + "\n"); 
         return out.toString();
     }
 
@@ -157,6 +192,10 @@ public class Match implements Cloneable, Serializable {
         cloned.setMatchId(this.matchId); 
         cloned.setFirstPlayerId(this.firstPlayerId); 
         cloned.setSecondPlayerId(this.secondPlayerId); 
+        if (this.startTime != null)
+             cloned.setStartTime((Timestamp)this.startTime.clone()); 
+        if (this.endTime != null)
+             cloned.setEndTime((Timestamp)this.endTime.clone()); 
         return cloned;
     }
 

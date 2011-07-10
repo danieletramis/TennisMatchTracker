@@ -42,6 +42,7 @@ public class Point implements Cloneable, Serializable {
     private String pointType;
     private Timestamp timestamp;
     private String pointLiteral;
+    private int deleted;
 
 
 
@@ -111,6 +112,13 @@ public class Point implements Cloneable, Serializable {
           this.pointLiteral = pointLiteralIn;
     }
 
+    public int getDeleted() {
+          return this.deleted;
+    }
+    public void setDeleted(int deletedIn) {
+          this.deleted = deletedIn;
+    }
+
 
 
     /** 
@@ -126,13 +134,15 @@ public class Point implements Cloneable, Serializable {
           int playerIdIn,
           String pointTypeIn,
           Timestamp timestampIn,
-          String pointLiteralIn) {
+          String pointLiteralIn,
+          int deletedIn) {
           this.pointId = pointIdIn;
           this.matchId = matchIdIn;
           this.playerId = playerIdIn;
           this.pointType = pointTypeIn;
           this.timestamp = timestampIn;
           this.pointLiteral = pointLiteralIn;
+          this.deleted = deletedIn;
     }
 
 
@@ -172,6 +182,9 @@ public class Point implements Cloneable, Serializable {
           } else if (!this.pointLiteral.equals(valueObject.getPointLiteral())) {
                     return(false);
           }
+          if (valueObject.getDeleted() != this.deleted) {
+                    return(false);
+          }
 
           return true;
     }
@@ -193,6 +206,7 @@ public class Point implements Cloneable, Serializable {
         out.append("pointType = " + this.pointType + "\n"); 
         out.append("timestamp = " + this.timestamp + "\n"); 
         out.append("pointLiteral = " + this.pointLiteral + "\n"); 
+        out.append("deleted = " + this.deleted + "\n"); 
         return out.toString();
     }
 
@@ -215,6 +229,7 @@ public class Point implements Cloneable, Serializable {
              cloned.setTimestamp((Timestamp)this.timestamp.clone()); 
         if (this.pointLiteral != null)
              cloned.setPointLiteral(new String(this.pointLiteral)); 
+        cloned.setDeleted(this.deleted); 
         return cloned;
     }
 

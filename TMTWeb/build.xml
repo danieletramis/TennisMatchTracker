@@ -11,7 +11,7 @@
 
 
 	
-<project name="TMTWeb" default="archive" basedir=".">
+<project name="TMTWeb" default="deploy" basedir=".">
 	
     <description>
            Tenni Match Tracker Java Web Application

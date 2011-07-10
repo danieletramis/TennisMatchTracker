@@ -30,5 +30,8 @@
       <dbColumn PK="false" colType="String" colName="pointLiteral" varName="pointLiteral" 
       automatic="false" valueSource="" indexed="false" colLength="255" orderLevel="0" orderType="ASC" />
 
+      <dbColumn PK="false" colType="Int" colName="deleted" varName="deleted" 
+      automatic="false" valueSource="" indexed="false" colLength="1" orderLevel="0" orderType="ASC" />
+      
    </columns>
 </daogen-metadata>
