@@ -176,12 +176,16 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 		
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p1] Punteggio errato!", model.getScoreString().equals("1 - 0"));
 		Assert.assertTrue("[p1] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p1] Set errati!", model.getSetsString().equals("0 - 0"));
 		
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
+		
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
 		
 		Assert.assertTrue("[p2] Punteggio errato!", model.getScoreString().equals("2 - 0"));
 		Assert.assertTrue("[p2] Game errati!", model.getGamesString().equals("6 - 6"));
@@ -190,12 +194,16 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 		
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p3] Punteggio errato!", model.getScoreString().equals("3 - 0"));
 		Assert.assertTrue("[p3] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p3] Set errati!", model.getSetsString().equals("0 - 0"));
 		
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
+		
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
 		
 		Assert.assertTrue("[p4] Punteggio errato!", model.getScoreString().equals("3 - 1"));
 		Assert.assertTrue("[p4] Game errati!", model.getGamesString().equals("6 - 6"));
@@ -204,6 +212,8 @@ public class MatchModelTest {
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 		
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p4] Punteggio errato!", model.getScoreString().equals("3 - 2"));
 		Assert.assertTrue("[p4] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p4] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -211,6 +221,8 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p5] Punteggio errato!", model.getScoreString().equals("4 - 2"));
 		Assert.assertTrue("[p5] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p5] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -218,6 +230,8 @@ public class MatchModelTest {
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p6] Punteggio errato!", model.getScoreString().equals("4 - 3"));
 		Assert.assertTrue("[p6] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p6] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -225,6 +239,8 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p7] Punteggio errato!", model.getScoreString().equals("5 - 3"));
 		Assert.assertTrue("[p7] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p7] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -232,6 +248,8 @@ public class MatchModelTest {
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p8] Punteggio errato!", model.getScoreString().equals("5 - 4"));
 		Assert.assertTrue("[p8] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p8] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -239,6 +257,8 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p9] Punteggio errato!", model.getScoreString().equals("6 - 4"));
 		Assert.assertTrue("[p9] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p9] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -246,6 +266,8 @@ public class MatchModelTest {
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p10] Punteggio errato!", model.getScoreString().equals("6 - 5"));
 		Assert.assertTrue("[p10] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p10] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -253,6 +275,8 @@ public class MatchModelTest {
 		model.updateScore(psm2);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p11] Punteggio errato!", model.getScoreString().equals("6 - 6"));
 		Assert.assertTrue("[p11] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p11] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -260,6 +284,8 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p12] Punteggio errato!", model.getScoreString().equals("7 - 6"));
 		Assert.assertTrue("[p12] Game errati!", model.getGamesString().equals("6 - 6"));
 		Assert.assertTrue("[p12] Set errati!", model.getSetsString().equals("0 - 0"));
@@ -267,6 +293,8 @@ public class MatchModelTest {
 		model.updateScore(psm1);
 		System.out.println(model.getScoreString() + " : " + model.getGamesString() + " : " + model.getSetsString());
 	
+		System.out.println("Now serving: " + model.getPlayerToServe().getPlayer().getName());
+		
 		Assert.assertTrue("[p13] Punteggio errato!", model.getScoreString().equals("0 - 0"));
 		Assert.assertTrue("[p13] Game errati!", model.getGamesString().equals("0 - 0"));
 		Assert.assertTrue("[p13] Set errati!", model.getSetsString().equals("1 - 0"));

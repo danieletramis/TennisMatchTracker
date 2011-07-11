@@ -126,7 +126,11 @@ public class MatchModel {
 						if (player1.getSet() == 2)
 							winner = player1.getPlayer();
 				}
+			} else if (tieBreak() && (player1.getScore()+player2.getScore() % 2 == 1)) {
+				invertServingPlayer();
 			}
+		} else if (tieBreak() && ((player1.getScore()+player2.getScore()) % 2 == 1)) {
+			invertServingPlayer();
 		}
 	}
 	
