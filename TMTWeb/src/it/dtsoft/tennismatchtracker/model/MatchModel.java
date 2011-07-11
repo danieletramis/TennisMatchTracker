@@ -81,7 +81,10 @@ public class MatchModel {
 		return firstPlayer.getGame() + " - " + secondPlayer.getGame();
 	}
 	public String getScoreString() {
-		if (firstPlayer.getScore() > 3 || secondPlayer.getScore() > 3) {
+		if (tieBreak())
+			return firstPlayer.getScore() + " - " + secondPlayer.getScore();
+		
+		if (firstPlayer.getScore() > minGameScore() || secondPlayer.getScore() > minGameScore()) {
 			if (firstPlayer.getScore() > secondPlayer.getScore())
 				return "A - 40";
 			else if (firstPlayer.getScore() < secondPlayer.getScore())
@@ -106,14 +109,15 @@ public class MatchModel {
 
 	private void incrementScore(PlayerScoreModel player1, PlayerScoreModel player2) {
 		player1.incrementScore();
-		if (player1.getScore() > 3) {
+		
+		if (player1.getScore() > minGameScore()) {
 			if (player1.getScore() - player2.getScore() >= 2) {
 				player1.incrementGame();
 				player1.setScore(0);
 				player2.setScore(0);
 				invertServingPlayer();
-				if (player1.getGame() >= 6) {
-					if (player1.getGame() - player2.getGame() >= 2) {
+				if ((player1.getGame() == 6 && (player1.getGame() - player2.getGame() >= 2))
+					|| player1.getGame() == 7) {
 						player1.incrementSet();
 						player1.setGame(0);
 						player1.setScore(0);
@@ -121,10 +125,20 @@ public class MatchModel {
 						player2.setScore(0);
 						if (player1.getSet() == 2)
 							winner = player1.getPlayer();
-					}
 				}
 			}
 		}
+	}
+	
+	private int minGameScore() {
+		if (tieBreak())
+			return 7;
+		
+		return 3;
+	}
+
+	private boolean tieBreak() {
+		return firstPlayer.getGame() == 6 && secondPlayer.getGame() == 6;
 	}
 
 	private void invertServingPlayer() {
